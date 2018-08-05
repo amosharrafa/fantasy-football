@@ -1,0 +1,16 @@
+button {
+    background-color: #69DB42;
+    color: white;
+    padding: 4px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, button:active {
+    background-color: red;
+}
+
+h1.player {
+	margin-left: 10px;
+}

@@ -1,0 +1,33 @@
+/*
+CSS for the CS142 project #5 main page
+
+Since CSS uses a global name space for classes we should use class names starting with
+cs142-main- here.
+*/
+
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 7px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: auto;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+    cursor: pointer;
+}
+
+button.update {
+	background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: auto;
+    border: none;
+}
