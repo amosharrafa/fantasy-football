@@ -6,16 +6,16 @@
    var names = [
       "Adam Mosharrafa",
       "Allens Ainscoughs",
-      "Andrew Ap",
-      "Austin Meyer",
       "Bobby Edwards",
-      "Carson Vom Steeg",
-      "Charles Rodriguez",
+      "Charlie Furrer",
       "Collin Liberty",
+      "Eric Verso",
       "Justin Kahl",
+      "Nick Kirchhof",
       "Rhys De Sota",
-      "Tomas Hilliard",
-      "Zach Ryan"
+      "Sam Werner",
+      "Slater Meehan",
+      "Tomas Hilliard"
    ];
 
    var users = [];
