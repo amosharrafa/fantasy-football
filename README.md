@@ -1,7 +1,7 @@
 # To view web app:
+**NOTE:** Make sure you have Mongod and NPM installed before continuing.
 - after cloning run `npm install`
 - in one terminal run `mongod`
-- **NOTE:** Make sure you have Mongod and NPM installed before continuing.
 - in another terminal `cd` into this folder and run `nodemon webServer.js`
 - in browser: go to http://localhost:3000/
 
