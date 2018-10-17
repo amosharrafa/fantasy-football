@@ -17,13 +17,43 @@ cs142App.controller('UserDetailController', ['$scope', '$routeParams', '$resourc
         $scope.FetchModel(detailURL, detailCallback);
     });
 
-    $scope.increment = function(toInc, amount) {
-      var userRes = $resource('/increment/' + $routeParams.userId + '/' + toInc + '/' + amount);
+    $scope.increment = function(key, amount) {
+      var userRes = $resource('/increment/' + $routeParams.userId + '/' + key + '/' + amount);
       userRes.save({}, function(user) {}, function errorCheck(err) {});
       $route.reload();
     };
 
-    $scope.ranks = ['DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', '6th', '5th', '4th', '3rd', '2nd', '1st'];
+    $scope.update = function(week) {
+      var label = week['label'];
+      var amount = week['amount'];
+      var userRes = $resource('/update/' + $routeParams.userId + '/' + label + '/' + amount);
+      userRes.save({}, function(user) {}, function errorCheck(err) {});
+      $route.reload();
+    };
+
+    $scope.ranks = {
+      0: 'DNQ',
+      7: '6th', 
+      8: '5th', 
+      9: '4th', 
+      10: '3rd', 
+      11: '2nd', 
+      12: '1st'
+    };
+
+    var setWeeks = function(min, max, step){
+      step = step || 1;
+      for (var i = min; i <= max; i += step) {
+        var week = {
+          number: i,
+          label: "week" + i
+        }
+        $scope.weeks.push(week);
+      }
+    };
+
+    $scope.weeks = [];
+    setWeeks(1, 17);
 
   }
 ]);

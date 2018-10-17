@@ -10,23 +10,11 @@
 		<li>Playoffs: {{user.tier4}} ({{ranks[user.tier4]}}) <button ng-click="increment('tier4', 1)">+1</button><button ng-click="increment('tier4', -1)">-1</button></li>
 		<li>Points/Week:
 		<ol>
-			<li>{{user.week1}} <button ng-click="increment('week1', 10)">+10</button><button ng-click="increment('week1', -1)">-1</button></li>
-			<li>{{user.week2}} <button ng-click="increment('week2', 10)">+10</button><button ng-click="increment('week2', -1)">-1</button></li>
-			<li>{{user.week3}} <button ng-click="increment('week3', 10)">+10</button><button ng-click="increment('week3', -1)">-1</button></li>
-			<li>{{user.week4}} <button ng-click="increment('week4', 10)">+10</button><button ng-click="increment('week4', -1)">-1</button></li>
-			<li>{{user.week5}} <button ng-click="increment('week5', 10)">+10</button><button ng-click="increment('week5', -1)">-1</button></li>
-			<li>{{user.week6}} <button ng-click="increment('week6', 10)">+10</button><button ng-click="increment('week6', -1)">-1</button></li>
-			<li>{{user.week7}} <button ng-click="increment('week7', 10)">+10</button><button ng-click="increment('week7', -1)">-1</button></li>
-			<li>{{user.week8}} <button ng-click="increment('week8', 10)">+10</button><button ng-click="increment('week8', -1)">-1</button></li>
-			<li>{{user.week9}} <button ng-click="increment('week9', 10)">+10</button><button ng-click="increment('week9', -1)">-1</button></li>
-			<li>{{user.week10}} <button ng-click="increment('week10', 10)">+10</button><button ng-click="increment('week10', -1)">-1</button></li>
-			<li>{{user.week11}} <button ng-click="increment('week11', 10)">+10</button><button ng-click="increment('week11', -1)">-1</button></li>
-			<li>{{user.week12}} <button ng-click="increment('week12', 10)">+10</button><button ng-click="increment('week12', -1)">-1</button></li>
-			<li>{{user.week13}} <button ng-click="increment('week13', 10)">+10</button><button ng-click="increment('week13', -1)">-1</button></li>
-			<li>{{user.week14}} <button ng-click="increment('week14', 10)">+10</button><button ng-click="increment('week14', -1)">-1</button></li>
-			<li>{{user.week15}} <button ng-click="increment('week15', 10)">+10</button><button ng-click="increment('week15', -1)">-1</button></li>
-			<li>{{user.week16}} <button ng-click="increment('week16', 10)">+10</button><button ng-click="increment('week16', -1)">-1</button></li>
-			<li>{{user.week17}} <button ng-click="increment('week17', 10)">+10</button><button ng-click="increment('week17', -1)">-1</button></li>
+			<li ng-repeat="week in weeks">
+				{{user[week.label]}}
+				<input ng-model="week.amount" type="number" min="0" max="999" />
+				<button ng-click="update(week)">Update</button>
+			</li>
 		</ol>
 		</li>
 	</ul>

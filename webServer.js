@@ -99,20 +99,34 @@ app.get('/user/:id', function (request, response) {
     });
 });
 
-app.post('/increment/:id/:toInc/:amount', function (request, response) {
+app.post('/increment/:id/:key/:amount', function (request, response) {
     User.findOne({id: request.params.id}, function (err, user) {
         if(!user) {
             response.status(400).send("Error.");
             return;
         }
-        var toAdd = parseInt(request.params.amount);
-        var index = request.params.toInc;
-        if(toAdd > 0 || user[index] > 0) user[index] += toAdd;
+        var amount = parseInt(request.params.amount);
+        var index = request.params.key;
+        if(amount > 0 || user[index] > 0) user[index] += amount;
         if(index == 'tier4') {
-            if(user[index] > 10) user[index] = 10;
-            else if(user[index] == 1) user[index] = 5;
-            else if(user[index] == 4) user[index] = 0;
+            if(user[index] > 12) user[index] = 12;
+            else if(user[index] == 1) user[index] = 7;
+            else if(user[index] == 6) user[index] = 0;
         }
+        user.save();
+        response.status(200).send(user);
+    });
+});
+
+app.post('/update/:id/:key/:amount', function (request, response) {
+    User.findOne({id: request.params.id}, function (err, user) {
+        if(!user) {
+            response.status(400).send("Error.");
+            return;
+        }
+        var newValue = parseInt(request.params.amount);
+        var index = request.params.key;
+        user[index] = newValue;
         user.save();
         response.status(200).send(user);
     });
