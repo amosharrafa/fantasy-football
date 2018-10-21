@@ -20,14 +20,10 @@
 			<td>{{user.total_points}} ({{user.tier2}})</td>
 			<td>{{user.wins}}-{{user.losses}} ({{user.tier3}})</td>
 			<td>{{ranks[user.tier4]}} ({{user.tier4}})</td>
-			<td ng-if="user.QB < 6">{{user.QB}}</td>
-			<td ng-if="user.QB >= 6" style="color:red;">{{user.QB}}</td>
-			<td ng-if="user.RB < 6">{{user.RB}}</td>
-			<td ng-if="user.RB >= 6" style="color:red;">{{user.RB}}</td>
-			<td ng-if="user.WR < 6">{{user.WR}}</td>
-			<td ng-if="user.WR >= 6" style="color:red;">{{user.WR}}</td>
-			<td ng-if="user.TE < 6">{{user.TE}}</td>
-			<td ng-if="user.TE >= 6" style="color:red;">{{user.TE}}</td>
+			<td style="{{color(user, 'QB')}}">{{user.QB}}</td>
+			<td style="{{color(user, 'RB')}}">{{user.RB}}</td>
+			<td style="{{color(user, 'WR')}}">{{user.WR}}</td>
+			<td style="{{color(user, 'TE')}}">{{user.TE}}</td>
 			<td>{{user.tier1 + user.tier2 + user.tier3 + user.tier4}}</td>
 		</tr>
 	</table>

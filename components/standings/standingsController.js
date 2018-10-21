@@ -30,6 +30,10 @@ cs142App.controller('StandingsController', ['$scope', '$routeParams', '$rootScop
 
 		$scope.ranks = ['DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', '6th', '5th', '4th', '3rd', '2nd', '1st'];
 
+		$scope.color = function(user, position) {
+			return user[position] >= 6 ? 'color: red' : '';
+		};
+
 		// attempt to automate, currently never called:
 
 		$scope.scoreboard = [];
