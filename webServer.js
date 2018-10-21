@@ -16,6 +16,11 @@ var fs = require("fs");
 var express = require('express');
 var app = express();
 
+// For fetching league data from ESPN
+const curl = new(require( 'curl-request'))();
+const leagueID = '737460';
+const season = '2018';
+
 mongoose.connect('mongodb://localhost/cs142project6');
 
 // We have the express static module (http://expressjs.com/en/starter/static-files.html) do all the work for us.
@@ -26,6 +31,16 @@ app.use(bodyParser.json());
 
 app.get('/', function (request, response) {
     response.send('Simple web server of files from ' + __dirname);
+});
+
+app.get('/scoreboard/:week', function (request, response) {
+    console.log(request.params.week);
+    var espnURL = 'http://games.espn.com/ffl/api/v2/scoreboard?leagueId=' + leagueID + '&matchupPeriodId=' + request.params.week + '&seasonId=' + season;
+    curl.get(espnURL).then(({statusCode, body, headers}) => {
+        response.status(statusCode).send(body.scoreboard);
+    }).catch((e) => {
+        response.status(400).send(e);
+    });
 });
 
 /*
@@ -246,7 +261,7 @@ app.get('/sort', function (request, response) {
         var sorted = users.sort(function(a, b){
             var aTotal = a.tier1 + a.tier2 + a.tier3 + a.tier4;
             var bTotal = b.tier1 + b.tier2 + b.tier3 + b.tier4;
-            if(aTotal == bTotal) return b.tier1 - a.tier1;
+            if(aTotal == bTotal) return b.tier4 - a.tier4;
             else return (bTotal - aTotal);
         });
         response.status(200).send(sorted);

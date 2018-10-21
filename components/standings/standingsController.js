@@ -30,5 +30,23 @@ cs142App.controller('StandingsController', ['$scope', '$routeParams', '$rootScop
 
 		$scope.ranks = ['DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', '6th', '5th', '4th', '3rd', '2nd', '1st'];
 
+		// attempt to automate, currently never called:
+
+		$scope.scoreboard = [];
+
+	 	var scoreboardURL = '/scoreboard/';
+	    var scoreboardCallback = function(model) {
+	        $scope.$apply(function () {
+	        	var matchupPeriodId = parseInt(model['matchupPeriodId']);
+	        	$scope.scoreboard[matchupPeriodId] = model['matchups'];
+	        	console.log($scope.scoreboard);
+	        });
+	    };
+
+	    var updateScoreboard = function(week) {
+	    	var scoreboardURL = '/scoreboard/' + week;
+	    	$scope.FetchModel(scoreboardURL, scoreboardCallback);
+	    };
+
 	}
 ]);
