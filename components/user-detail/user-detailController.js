@@ -23,10 +23,9 @@ cs142App.controller('UserDetailController', ['$scope', '$routeParams', '$resourc
       $route.reload();
     };
 
-    $scope.update = function(week) {
-      var label = week['label'];
-      //var amount = week['amount'];
-      var amount = $scope.user[week.label];
+    $scope.update = function(index) {
+      var label = index['label'];
+      var amount = $scope.user[index.label];
       var userRes = $resource('/update/' + $routeParams.userId + '/' + label + '/' + amount);
       userRes.save({}, function(user) {}, function errorCheck(err) {});
       $route.reload();
@@ -41,6 +40,16 @@ cs142App.controller('UserDetailController', ['$scope', '$routeParams', '$resourc
       11: '2nd', 
       12: '1st'
     };
+
+    $scope.stats = [
+      { name: 'Wins', max: 99, min: 0, label: 'wins' },
+      { name: 'Losses', max: 99, min: 0, label: 'losses' },
+      { name: 'QB Used', max: 99, min: 0, label: 'QB' },
+      { name: 'RB Used', max: 99, min: 0, label: 'RB' },
+      { name: 'WR Used', max: 99, min: 0, label: 'WR' },
+      { name: 'TE Used', max: 99, min: 0, label: 'TE' },
+      { name: 'Playoffs', max: 12, min: 0, label: 'tier4' }
+    ];
 
     var setWeeks = function(min, max, step){
       step = step || 1;

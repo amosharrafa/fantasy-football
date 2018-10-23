@@ -1,25 +1,41 @@
 <div>
 	<h1 class="player">{{user.first_name}} {{user.last_name}}</h1>
-	<ul>
-		<li>Wins: {{user.wins}} <button ng-click="increment('wins', 1)">+1</button><button ng-click="increment('wins', -1)">-1</button></li>
-		<li>Losses: {{user.losses}} <button ng-click="increment('losses', 1)">+1</button><button ng-click="increment('losses', -1)">-1</button></li>
-		<li>QB Used: {{user.QB}} <button ng-click="increment('QB', 1)">+1</button><button ng-click="increment('QB', -1)">-1</button></li>
-		<li>RB Used: {{user.RB}} <button ng-click="increment('RB', 1)">+1</button><button ng-click="increment('RB', -1)">-1</button></li>
-		<li>WR Used: {{user.WR}} <button ng-click="increment('WR', 1)">+1</button><button ng-click="increment('WR', -1)">-1</button></li>
-		<li>TE Used: {{user.TE}} <button ng-click="increment('TE', 1)">+1</button><button ng-click="increment('TE', -1)">-1</button></li>
-		<li>Playoffs: {{user.tier4}} ({{ranks[user.tier4]}}) <button ng-click="increment('tier4', 1)">+1</button><button ng-click="increment('tier4', -1)">-1</button></li>
-		<li>Points/Week:</li>
-	</ul>
-	<table class="user-detail">
-		<tr>
-			<th>Week</th>
-			<th>Points</th>
-			<th></th>
-		</tr>
-		<tr ng-repeat="week in weeks">
-			<td>{{week.number}}.</td>
-      		<td><input ng-model="user[week.label]" type="number" min="0" max="999" /></td>
-      		<td><button ng-click="update(week)">Save</button></td>
-    	</tr>
-	</table>
+	<div class="row">
+	  	<div class="column">
+			<table class="user-detail">
+				<thead>
+					<tr>
+						<th>Stat</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="stat in stats">
+						<td>{{stat.name}}</td>
+			      		<td><input ng-model="user[stat.label]" type="number" min="{{stat.min}}" max="{{stat.max}}" /></td>
+			      		<td><button ng-click="update(stat)">Save</button></td>
+			    	</tr>
+		    	</tbody>
+			</table>
+		</div>
+	  	<div class="column">
+			<table class="user-detail">
+				<thead>
+					<tr>
+						<th>Week</th>
+						<th>Points</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="scrollable">
+					<tr ng-repeat="week in weeks">
+						<td>{{week.number}}.</td>
+			      		<td><input ng-model="user[week.label]" type="number" min="0" max="999" /></td>
+			      		<td><button ng-click="update(week)">Save</button></td>
+			    	</tr>
+		    	</tbody>
+			</table>
+		</div>
+	</div>
 </div>
