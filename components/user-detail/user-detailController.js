@@ -25,7 +25,8 @@ cs142App.controller('UserDetailController', ['$scope', '$routeParams', '$resourc
 
     $scope.update = function(week) {
       var label = week['label'];
-      var amount = week['amount'];
+      //var amount = week['amount'];
+      var amount = $scope.user[week.label];
       var userRes = $resource('/update/' + $routeParams.userId + '/' + label + '/' + amount);
       userRes.save({}, function(user) {}, function errorCheck(err) {});
       $route.reload();

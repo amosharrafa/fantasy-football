@@ -14,3 +14,12 @@ button:hover, button:active {
 h1.player {
 	margin-left: 10px;
 }
+
+table.user-detail {
+	color: #333; /* Lighten up font color */
+	font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+	width: 25%;
+	margin-left: 5%;
+	collapse; border-spacing: 0;
+	margin-top: 20px;
+}

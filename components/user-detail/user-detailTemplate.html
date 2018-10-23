@@ -8,14 +8,18 @@
 		<li>WR Used: {{user.WR}} <button ng-click="increment('WR', 1)">+1</button><button ng-click="increment('WR', -1)">-1</button></li>
 		<li>TE Used: {{user.TE}} <button ng-click="increment('TE', 1)">+1</button><button ng-click="increment('TE', -1)">-1</button></li>
 		<li>Playoffs: {{user.tier4}} ({{ranks[user.tier4]}}) <button ng-click="increment('tier4', 1)">+1</button><button ng-click="increment('tier4', -1)">-1</button></li>
-		<li>Points/Week:
-		<ol>
-			<li ng-repeat="week in weeks">
-				{{user[week.label]}}
-				<input ng-model="week.amount" type="number" min="0" max="999" />
-				<button ng-click="update(week)">Update</button>
-			</li>
-		</ol>
-		</li>
+		<li>Points/Week:</li>
 	</ul>
+	<table class="user-detail">
+		<tr>
+			<th>Week</th>
+			<th>Points</th>
+			<th></th>
+		</tr>
+		<tr ng-repeat="week in weeks">
+			<td>{{week.number}}.</td>
+      		<td><input ng-model="user[week.label]" type="number" min="0" max="999" /></td>
+      		<td><button ng-click="update(week)">Save</button></td>
+    	</tr>
+	</table>
 </div>
