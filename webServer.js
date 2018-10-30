@@ -17,9 +17,13 @@ var express = require('express');
 var app = express();
 
 // For fetching league data from ESPN
-const curl = new(require( 'curl-request'))();
+const espnFF = require('espn-ff-api-2');
 const leagueID = '737460';
 const season = '2018';
+const cookies = {
+  espnS2 : 'AECn1p0rs2OHi13qlW4K5DckFLyj1PnYLtQOzl0VuCqh1TZ1W6v',
+  SWID   : '5B21F2D0-0482-4CE1-A2D9-E84933C8ADAA'
+};
 
 mongoose.connect('mongodb://localhost/cs142project6');
 
@@ -34,7 +38,6 @@ app.get('/', function (request, response) {
 });
 
 app.get('/scoreboard/:week', function (request, response) {
-    console.log(request.params.week);
     var espnURL = 'http://games.espn.com/ffl/api/v2/scoreboard?leagueId=' + leagueID + '&matchupPeriodId=' + request.params.week + '&seasonId=' + season;
     curl.get(espnURL).then(({statusCode, body, headers}) => {
         response.status(statusCode).send(body.scoreboard);

@@ -38,7 +38,6 @@ cs142App.controller('StandingsController', ['$scope', '$routeParams', '$rootScop
 
 		$scope.scoreboard = [];
 
-	 	var scoreboardURL = '/scoreboard/';
 	    var scoreboardCallback = function(model) {
 	        $scope.$apply(function () {
 	        	var matchupPeriodId = parseInt(model['matchupPeriodId']);
@@ -47,7 +46,7 @@ cs142App.controller('StandingsController', ['$scope', '$routeParams', '$rootScop
 	        });
 	    };
 
-	    var updateScoreboard = function(week) {
+	    $scope.updateScoreboard = function(week) {
 	    	var scoreboardURL = '/scoreboard/' + week;
 	    	$scope.FetchModel(scoreboardURL, scoreboardCallback);
 	    };
