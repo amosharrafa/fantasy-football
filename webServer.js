@@ -25,7 +25,7 @@ const cookies = {
   SWID   : '5B21F2D0-0482-4CE1-A2D9-E84933C8ADAA'
 };
 
-mongoose.connect('mongodb://localhost/cs142project6');
+mongoose.connect('mongodb://localhost/cs142project6', { useNewUrlParser: true });
 
 // We have the express static module (http://expressjs.com/en/starter/static-files.html) do all the work for us.
 app.use(express.static(__dirname));
@@ -264,7 +264,7 @@ app.get('/sort', function (request, response) {
         var sorted = users.sort(function(a, b){
             var aTotal = a.tier1 + a.tier2 + a.tier3 + a.tier4;
             var bTotal = b.tier1 + b.tier2 + b.tier3 + b.tier4;
-            if(aTotal == bTotal) return b.tier4 - a.tier4;
+            if(aTotal == bTotal) return b.tier1 - a.tier1;
             else return (bTotal - aTotal);
         });
         response.status(200).send(sorted);

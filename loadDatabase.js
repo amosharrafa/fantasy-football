@@ -102,6 +102,6 @@ Promise.all(removePromises).then(function () {
     });
 
     allPromises.then(function () {
-        mongoose.disconnect();
+        // mongoose.disconnect();
     });
 });
