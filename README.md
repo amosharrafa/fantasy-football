@@ -12,4 +12,3 @@
 ## To change player names:
 - open modelData/userData.js in text editor
 - replace old names with new ones
-  - make sure no comma after last name in list
