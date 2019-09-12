@@ -123,7 +123,7 @@ app.post('/increment/:id/:key/:amount', function (request, response) {
             response.status(400).send("Error.");
             return;
         }
-        var amount = parseInt(request.params.amount);
+        var amount = parseFloat(request.params.amount);
         var index = request.params.key;
         if(amount > 0 || user[index] > 0) user[index] += amount;
         if(index == 'tier4') {
@@ -142,7 +142,7 @@ app.post('/update/:id/:key/:amount', function (request, response) {
             response.status(400).send("Error.");
             return;
         }
-        var newValue = parseInt(request.params.amount);
+        var newValue = parseFloat(request.params.amount);
         var index = request.params.key;
         user[index] = newValue;
         user.save();

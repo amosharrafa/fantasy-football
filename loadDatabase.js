@@ -80,8 +80,7 @@ Promise.all(removePromises).then(function () {
                 userObj.save();
 
                 user.objectID = userObj._id;
-                console.log('Adding user:', user.first_name + ' ' + user.last_name, ' with ID ',
-                    user.objectID);
+                console.log('Adding user:', user.first_name + ' ' + user.last_name, ' with ID ', user.objectID);
             }
         });
     });

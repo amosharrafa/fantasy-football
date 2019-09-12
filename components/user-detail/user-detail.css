@@ -22,7 +22,11 @@ table.user-detail {
 	margin-top: 0;
 }
 
-/* Create two equal columns that floats next to each other */
+td.wide {
+    width: 60px;
+}
+
+/* Create two equal columns that float next to each other */
 .column {
     float: left;
     width: 300px;
