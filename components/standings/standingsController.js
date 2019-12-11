@@ -28,7 +28,7 @@ cs142App.controller('StandingsController', ['$scope', '$routeParams', '$rootScop
 
 		$scope.FetchModel(sortURL, sortCallback);
 
-		$scope.ranks = ['DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', 'DNQ', '6th', '5th', '4th', '3rd', '2nd', '1st'];
+		$scope.ranks = ['DNQ', '13th', '12th', '11th', '10th', '9th', '8th', '7th', '6th', '5th', '4th', '3rd', '2nd', '1st'];
 
 		$scope.color = function(user, position) {
 			return user[position] >= 6 ? 'color: red' : '';
